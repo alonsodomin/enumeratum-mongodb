@@ -1,5 +1,3 @@
-scalaVersion := "2.12.11"
-
 inThisBuild(List(
   organization := "com.github.alonsodomin",
   homepage := Some(url("https://github.com/alonsodomin/enumeratum-mongodb")),

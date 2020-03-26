@@ -10,7 +10,6 @@ jdk:
 
 scala:
   - 2.12.11
-#  - 2.13.1
 
 cache:
   directories:
@@ -51,7 +50,6 @@ jobs:
       script: sbt compile
     - stage: release
       script: sbt ci-release
-      #script: scripts/travis-release.sh
 
 branches:
   only:
