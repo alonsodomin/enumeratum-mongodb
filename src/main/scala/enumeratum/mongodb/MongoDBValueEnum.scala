@@ -23,37 +23,37 @@ private[mongodb] trait MongoDBValueEnum[ValueType, EntryType <: ValueEnumEntry[V
 
 }
 
-trait MongoDBIntValueEnum[EntryType <: ValueEnumEntry[Int]]
+trait MongoDBIntEnum[EntryType <: ValueEnumEntry[Int]]
     extends MongoDBValueEnum[Int, EntryType] { enum: ValueEnum[Int, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Int, EntryType] =
     new IntValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBLongValueEnum[EntryType <: ValueEnumEntry[Long]]
+trait MongoDBLongEnum[EntryType <: ValueEnumEntry[Long]]
     extends MongoDBValueEnum[Long, EntryType] { enum: ValueEnum[Long, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Long, EntryType] =
     new LongValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBShortValueEnum[EntryType <: ValueEnumEntry[Short]]
+trait MongoDBShortEnum[EntryType <: ValueEnumEntry[Short]]
     extends MongoDBValueEnum[Short, EntryType] { enum: ValueEnum[Short, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Short, EntryType] =
     new ShortValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBByteValueEnum[EntryType <: ValueEnumEntry[Byte]]
+trait MongoDBByteEnum[EntryType <: ValueEnumEntry[Byte]]
     extends MongoDBValueEnum[Byte, EntryType] { enum: ValueEnum[Byte, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Byte, EntryType] =
     new ByteValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBStringValueEnum[EntryType <: ValueEnumEntry[String]]
+trait MongoDBStringEnum[EntryType <: ValueEnumEntry[String]]
     extends MongoDBValueEnum[String, EntryType] { enum: ValueEnum[String, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[String, EntryType] =
     new StringValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBCharValueEnum[EntryType <: ValueEnumEntry[Char]]
+trait MongoDBCharEnum[EntryType <: ValueEnumEntry[Char]]
     extends MongoDBValueEnum[Char, EntryType] { enum: ValueEnum[Char, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Char, EntryType] =
     new CharValueEnumCodec[EntryType](enum)

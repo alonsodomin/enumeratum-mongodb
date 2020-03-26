@@ -21,7 +21,8 @@ class EnumCodecSpec extends AnyFunSpec with Matchers with MongoEmbedDatabase {
     CodecRegistries.fromRegistries(
       CodecRegistries.fromProviders(
         Macros.createCodecProvider[Shirt](),
-        ShirtSize.bsonCodecProvider
+        ShirtSize.bsonCodecProvider,
+        CharShirtSize.bsonCodecProvider
       ),
       MongoClientSettings.getDefaultCodecRegistry
     )
@@ -31,7 +32,7 @@ class EnumCodecSpec extends AnyFunSpec with Matchers with MongoEmbedDatabase {
       val mongoDBPort = findFreePort()
 
       withEmbedMongoFixture(mongoDBPort) { _ =>
-        val givenShirt = Shirt("Blue shirt", ShirtSize.Medium)
+        val givenShirt = Shirt("Blue shirt", ShirtSize.Medium, CharShirtSize.Medium)
 
         val assertion = for {
           collection  <- collectionHandle(mongoDBPort)
