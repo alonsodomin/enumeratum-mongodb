@@ -30,6 +30,9 @@ before_install:
   - export PATH=${PATH}:./vendor/bundle
   - git fetch --tags
 
+script:
+  - scripts/travis-build.sh
+
 stages:
   - name: test
   # - name: docs
@@ -40,12 +43,8 @@ jobs:
   include:
     # - stage: docs
     #   script: sbt clean makeMicrosite
-    - name: build
-      script: sbt test
-    - name: formatting
-      script: sbt checkfmt
     - stage: release
-      script: sbt ci-release
+      script: scripts/travis-release.sh
 
 branches:
   only:

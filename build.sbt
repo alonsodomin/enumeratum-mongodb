@@ -34,3 +34,13 @@ addCommandAlias(
   "checkfmt",
   Seq("scalafmtSbtCheck", "scalafmtCheck", "test:scalafmtCheck").mkString(";")
 )
+
+addCommandAlias(
+  "validate",
+  Seq("checkfmt", "test").mkString(";")
+)
+
+addCommandAlias(
+  "rebuild",
+  Seq("clean", "validate").mkString(";")
+)
