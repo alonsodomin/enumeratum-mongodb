@@ -1,6 +1,7 @@
 package enumeratum.mongodb
 
 import enumeratum._
+
 import org.bson.codecs.Codec
 import org.bson.codecs.configuration.{CodecProvider, CodecRegistry}
 

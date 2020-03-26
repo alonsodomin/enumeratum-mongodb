@@ -4,7 +4,6 @@ import enumeratum._
 
 import org.bson.{BsonReader, BsonWriter}
 import org.bson.codecs.{Codec, EncoderContext, DecoderContext}
-import org.bson.codecs.configuration.CodecProvider
 
 import scala.reflect.ClassTag
 
