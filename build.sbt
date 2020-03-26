@@ -1,3 +1,5 @@
+name := "enumeratum-mongodb"
+
 inThisBuild(
   List(
     organization := "com.github.alonsodomin",
