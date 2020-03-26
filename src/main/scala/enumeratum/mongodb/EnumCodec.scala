@@ -8,7 +8,9 @@ import org.bson.codecs.configuration.CodecProvider
 
 import scala.reflect.ClassTag
 
-final class EnumCodec[A <: EnumEntry: ClassTag] private[mongodb] (factory: Enum[A]) extends Codec[A] {
+final class EnumCodec[A <: EnumEntry] private[mongodb] (factory: Enum[A])(
+    implicit classTag: ClassTag[A]
+) extends Codec[A] {
 
   def encode(writer: BsonWriter, value: A, encoderContext: EncoderContext): Unit =
     writer.writeString(value.entryName)
@@ -17,7 +19,7 @@ final class EnumCodec[A <: EnumEntry: ClassTag] private[mongodb] (factory: Enum[
     factory.withName(reader.readString())
 
   private lazy val _encoderClass =
-    implicitly[ClassTag[A]].runtimeClass.asInstanceOf[Class[A]]
+    classTag.runtimeClass.asInstanceOf[Class[A]]
   @inline def getEncoderClass(): Class[A] = _encoderClass
-  
+
 }

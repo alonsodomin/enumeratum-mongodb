@@ -19,11 +19,10 @@ class EnumCodecSpec extends AnyFunSpec with Matchers with MongoEmbedDatabase {
 
   val codecRegistry =
     CodecRegistries.fromRegistries(
-    CodecRegistries.fromProviders(
-
-      Macros.createCodecProvider[Shirt](),
-      ShirtSize
-    ),
+      CodecRegistries.fromProviders(
+        Macros.createCodecProvider[Shirt](),
+        ShirtSize.bsonCodecProvider
+      ),
       MongoClientSettings.getDefaultCodecRegistry
     )
 
@@ -49,15 +48,17 @@ class EnumCodecSpec extends AnyFunSpec with Matchers with MongoEmbedDatabase {
   }
 
   private def collectionHandle(port: Int) = {
-    val clientSettings = MongoClientSettings.builder()
+    val clientSettings = MongoClientSettings
+      .builder()
       .codecRegistry(codecRegistry)
       .applyConnectionString(new ConnectionString(s"mongodb://localhost:$port"))
       .build()
 
     val mongoClient = MongoClient(clientSettings)
-    val database = mongoClient.getDatabase("EnumCodeSpec")
+    val database    = mongoClient.getDatabase("EnumCodeSpec")
 
-    database.createCollection("shirts")
+    database
+      .createCollection("shirts")
       .toFuture
       .map(_ => database.getCollection[Shirt]("shirts"))
   }
