@@ -23,14 +23,14 @@ private[mongodb] trait MongoDBValueEnum[ValueType, EntryType <: ValueEnumEntry[V
 
 }
 
-trait MongoDBIntEnum[EntryType <: ValueEnumEntry[Int]]
-    extends MongoDBValueEnum[Int, EntryType] { enum: ValueEnum[Int, EntryType] =>
+trait MongoDBIntEnum[EntryType <: ValueEnumEntry[Int]] extends MongoDBValueEnum[Int, EntryType] {
+  enum: ValueEnum[Int, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Int, EntryType] =
     new IntValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBLongEnum[EntryType <: ValueEnumEntry[Long]]
-    extends MongoDBValueEnum[Long, EntryType] { enum: ValueEnum[Long, EntryType] =>
+trait MongoDBLongEnum[EntryType <: ValueEnumEntry[Long]] extends MongoDBValueEnum[Long, EntryType] {
+  enum: ValueEnum[Long, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Long, EntryType] =
     new LongValueEnumCodec[EntryType](enum)
 }
@@ -41,8 +41,8 @@ trait MongoDBShortEnum[EntryType <: ValueEnumEntry[Short]]
     new ShortValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBByteEnum[EntryType <: ValueEnumEntry[Byte]]
-    extends MongoDBValueEnum[Byte, EntryType] { enum: ValueEnum[Byte, EntryType] =>
+trait MongoDBByteEnum[EntryType <: ValueEnumEntry[Byte]] extends MongoDBValueEnum[Byte, EntryType] {
+  enum: ValueEnum[Byte, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Byte, EntryType] =
     new ByteValueEnumCodec[EntryType](enum)
 }
@@ -53,8 +53,8 @@ trait MongoDBStringEnum[EntryType <: ValueEnumEntry[String]]
     new StringValueEnumCodec[EntryType](enum)
 }
 
-trait MongoDBCharEnum[EntryType <: ValueEnumEntry[Char]]
-    extends MongoDBValueEnum[Char, EntryType] { enum: ValueEnum[Char, EntryType] =>
+trait MongoDBCharEnum[EntryType <: ValueEnumEntry[Char]] extends MongoDBValueEnum[Char, EntryType] {
+  enum: ValueEnum[Char, EntryType] =>
   final def createCodec(implicit classTag: ClassTag[EntryType]): ValueEnumCodec[Char, EntryType] =
     new CharValueEnumCodec[EntryType](enum)
 }
