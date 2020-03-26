@@ -46,8 +46,10 @@ jobs:
   include:
     # - stage: docs
     #   script: sbt clean makeMicrosite
-    - name: compile
-      script: sbt compile
+    - name: build
+      script: sbt test
+    - name: formatting
+      script: sbt checkfmt
     - stage: release
       script: sbt ci-release
 
